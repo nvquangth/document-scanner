@@ -120,10 +120,10 @@ private fun getCorners(contours: ArrayList<MatOfPoint>, size: Size): Corners? {
 }
 
 private fun sortPoints(points: List<Point>): List<Point> {
-    val p0 = points.minBy { point -> point.x + point.y } ?: Point()
-    val p1 = points.maxBy { point -> point.x - point.y } ?: Point()
-    val p2 = points.maxBy { point -> point.x + point.y } ?: Point()
-    val p3 = points.minBy { point -> point.x - point.y } ?: Point()
+    val p0 = points.minByOrNull { point -> point.x + point.y } ?: Point()
+    val p1 = points.minByOrNull { point -> point.x - point.y } ?: Point()
+    val p2 = points.minByOrNull { point -> point.x + point.y } ?: Point()
+    val p3 = points.minByOrNull { point -> point.x - point.y } ?: Point()
 
     return listOf(p0, p1, p2, p3)
 }
